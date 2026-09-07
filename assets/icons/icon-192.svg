@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <linearGradient id="progGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.25" flood-color="#000000"/>
+    </filter>
+  </defs>
+  <rect width="192" height="192" rx="42" fill="#0f172a"/>
+  <circle cx="96" cy="96" r="62" fill="none" stroke="#1e293b" stroke-width="12" />
+  <circle cx="96" cy="96" r="62" fill="none" stroke="url(#progGrad)" stroke-width="12" stroke-linecap="round" stroke-dasharray="390" stroke-dashoffset="95" transform="rotate(-90 96 96)" filter="url(#shadow)" />
+  <path d="M72 96 L88 112 L124 76" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

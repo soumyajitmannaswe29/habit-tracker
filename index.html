@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="system">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#4f46e5" />
+  <meta name="description" content="PROGRESS — Personal Habit & Growth Tracker. Premium spreadsheet habit tracking, daily check-ins, streaks, and analytics." />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="./assets/icons/icon-192.svg" />
+  <link rel="apple-touch-icon" href="./assets/icons/icon-192.svg" />
+  <title>PROGRESS — Personal Habit & Growth Tracker</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Desktop & Mobile Sidebar Navigation -->
+    <aside class="app-sidebar" id="app-sidebar">
+      <div class="sidebar-header">
+        <div class="logo-wrapper">
+          <svg class="logo-icon" width="28" height="28" viewBox="0 0 192 192">
+            <rect width="192" height="192" rx="42" fill="#4f46e5"/>
+            <path d="M72 96 L88 112 L124 76" fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span class="logo-text">PROGRESS</span>
+        </div>
+        <span class="logo-badge">PRO</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="nav-item active" data-view-target="dashboard">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="#today" class="nav-item" data-view-target="today">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path></svg>
+          <span>Today</span>
+        </a>
+        <a href="#tracker" class="nav-item" data-view-target="tracker">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><line x1="9" y1="10" x2="9" y2="22"></line><line x1="15" y1="10" x2="15" y2="22"></line></svg>
+          <span>Habit Tracker</span>
+        </a>
+        <a href="#goals" class="nav-item" data-view-target="goals">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+          <span>Goals</span>
+        </a>
+        <a href="#insights" class="nav-item" data-view-target="insights">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          <span>Insights</span>
+        </a>
+        <a href="#history" class="nav-item" data-view-target="history">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>History</span>
+        </a>
+        <a href="#settings" class="nav-item" data-view-target="settings">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"></path></svg>
+          <span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-action-btn" id="btn-sidebar-export" title="Download backup of all data">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span>Export Backup</span>
+        </button>
+        <button class="sidebar-action-btn" id="btn-sidebar-import" title="Restore data from backup file">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+          <span>Import Backup</span>
+        </button>
+        <input type="file" id="import-file-input" accept=".json" style="display: none;" />
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="app-main">
+      <!-- App Header Bar -->
+      <header class="app-header">
+        <div class="header-left">
+          <button class="btn-icon header-sidebar-toggle" id="btn-toggle-sidebar" aria-label="Toggle Sidebar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+          <button class="btn-icon header-mobile-menu" id="btn-mobile-menu" aria-label="Open Menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+          <div class="header-breadcrumb">
+            <span class="app-title-mobile">PROGRESS</span>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Auto-Save Status Indicator -->
+          <div class="save-status saved" id="auto-save-indicator" title="Automatic persistence status">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Saved ✓</span>
+          </div>
+
+          <!-- PWA Install Button (hidden until prompt is fired) -->
+          <button class="btn btn-secondary btn-sm" id="btn-pwa-install" style="display: none;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Install App</span>
+          </button>
+
+          <!-- Primary + Add Habit Button -->
+          <button class="btn btn-primary" id="btn-header-add-habit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Add Habit</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Scrollable Main View Container -->
+      <div class="view-content-wrapper">
+        
+        <!-- 1. DASHBOARD VIEW -->
+        <section class="view-section active" id="view-dashboard">
+          <div class="dashboard-hero card">
+            <div class="hero-text">
+              <h1 class="hero-greeting" id="dashboard-greeting">Good morning!</h1>
+              <p class="hero-date" id="dashboard-date">Loading date...</p>
+              <p class="hero-quote" id="dashboard-quote">"Consistency is the true foundation of greatness."</p>
+            </div>
+            <div class="hero-rings">
+              <div class="ring-item">
+                <div class="ring-title">TODAY</div>
+                <div id="ring-today-progress"></div>
+              </div>
+              <div class="ring-item">
+                <div class="ring-title">THIS WEEK</div>
+                <div id="ring-week-progress"></div>
+              </div>
+              <div class="ring-item">
+                <div class="ring-title">THIS MONTH</div>
+                <div id="ring-month-progress"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Main Metric Cards -->
+          <div class="stats-grid">
+            <div class="card stat-card">
+              <div class="stat-icon-wrapper" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">
+                🔥
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">CURRENT STREAK</span>
+                <span class="stat-value" id="dash-stat-streak">0 Days</span>
+              </div>
+            </div>
+
+            <div class="card stat-card">
+              <div class="stat-icon-wrapper" style="background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                ⭐
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">BEST HABIT</span>
+                <span class="stat-value" id="dash-stat-best-habit">—</span>
+              </div>
+            </div>
+
+            <div class="card stat-card">
+              <div class="stat-icon-wrapper" style="background: rgba(79, 70, 229, 0.1); color: #4f46e5;">
+                🎯
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">TOTAL COMPLETIONS</span>
+                <span class="stat-value" id="dash-stat-total-completions">0</span>
+              </div>
+            </div>
+
+            <div class="card stat-card">
+              <div class="stat-icon-wrapper" style="background: rgba(6, 182, 212, 0.1); color: #06b6d4;">
+                ⚡
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">ACTIVE HABITS</span>
+                <span class="stat-value" id="dash-stat-active-habits">0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Today's Quick Habit Checklist -->
+          <div class="dashboard-section card" style="margin-top: 24px;">
+            <div class="section-header-row">
+              <div>
+                <h2 class="section-title">Today's Focus</h2>
+                <p class="section-subtitle">Click to mark complete. Instant sync across all charts and streaks.</p>
+              </div>
+              <a href="#today" class="btn btn-outline btn-sm" data-view-target="today">Open Full Today View →</a>
+            </div>
+            <div id="dashboard-today-list" class="dashboard-today-checklist">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. TODAY VIEW -->
+        <section class="view-section" id="view-today">
+          <div class="today-top-banner card">
+            <div class="today-summary-left">
+              <h1 class="page-title">Today's Habits</h1>
+              <p class="page-subtitle" id="today-progress-count">0 of 0 completed</p>
+            </div>
+            <div class="today-summary-right">
+              <div class="today-stat-pill">
+                <span class="pill-label">Completion</span>
+                <span class="pill-val" id="today-progress-percent">0%</span>
+              </div>
+              <div class="today-stat-pill">
+                <span class="pill-label">Remaining</span>
+                <span class="pill-val" id="today-remaining-count">0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category Filter Bar -->
+          <div class="filter-chips-bar" id="today-category-filters">
+            <!-- Dynamically populated -->
+          </div>
+
+          <!-- Interactive Cards List -->
+          <div class="today-cards-grid" id="today-habits-cards-list">
+            <!-- Dynamically populated -->
+          </div>
+        </section>
+
+        <!-- 3. HABIT TRACKER (MONTHLY SPREADSHEET) VIEW -->
+        <section class="view-section" id="view-tracker">
+          <!-- Month Selector Toolbar -->
+          <div class="tracker-toolbar card">
+            <div class="month-nav-group">
+              <button class="btn btn-icon" id="btn-prev-month" title="Previous Month">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+              <div class="month-dropdowns">
+                <select id="select-month" class="form-select"></select>
+                <select id="select-year" class="form-select"></select>
+              </div>
+              <button class="btn btn-icon" id="btn-next-month" title="Next Month">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+              <button class="btn btn-secondary btn-sm" id="btn-month-today">Today</button>
+            </div>
+
+            <div class="tracker-legend">
+              <span class="legend-item"><span class="legend-box checked"></span> Completed</span>
+              <span class="legend-item"><span class="legend-box today"></span> Today</span>
+              <span class="legend-item"><span class="legend-box unscheduled"></span> Off-day</span>
+            </div>
+          </div>
+
+          <!-- The Spreadsheet Grid Table -->
+          <div class="tracker-table-outer card" id="monthly-tracker-container">
+            <!-- Table generated dynamically -->
+          </div>
+
+          <!-- Weekly Progress Section -->
+          <div class="weekly-progress-container card" style="margin-top: 24px;">
+            <div class="section-header-row">
+              <div>
+                <h3 class="section-title">Weekly Progress</h3>
+                <p class="section-subtitle">Calendar week completion rates for the selected month</p>
+              </div>
+            </div>
+            <div class="weekly-cards-grid" id="weekly-progress-cards">
+              <!-- Dynamically populated with 5 week cards -->
+            </div>
+          </div>
+
+          <!-- Monthly Reflection Section -->
+          <div class="monthly-reflection-container card" style="margin-top: 24px;">
+            <div class="section-header-row">
+              <div>
+                <h3 class="section-title" id="reflection-month-title">Monthly Reflection</h3>
+                <p class="section-subtitle">Auto-saves per month to review insights, wins, and next priorities</p>
+              </div>
+            </div>
+
+            <div class="reflection-grid">
+              <div class="reflection-field-group">
+                <label for="reflection-went-well">What went well? 🌟</label>
+                <textarea id="reflection-went-well" class="form-textarea" rows="3" placeholder="Wins, solid routines, and positive momentum..."></textarea>
+              </div>
+
+              <div class="reflection-field-group">
+                <label for="reflection-needs-improvement">What needs improvement? 🔍</label>
+                <textarea id="reflection-needs-improvement" class="form-textarea" rows="3" placeholder="Obstacles, missed days, or friction points..."></textarea>
+              </div>
+
+              <div class="reflection-field-group">
+                <label for="reflection-biggest-win">Biggest win of the month 🏆</label>
+                <textarea id="reflection-biggest-win" class="form-textarea" rows="2" placeholder="Key milestone or breakthrough..."></textarea>
+              </div>
+
+              <div class="reflection-field-group">
+                <label for="reflection-next-focus">Focus for next month 🎯</label>
+                <textarea id="reflection-next-focus" class="form-textarea" rows="2" placeholder="Primary habit or area to prioritize..."></textarea>
+              </div>
+
+              <div class="reflection-field-group full-width">
+                <label for="reflection-general-notes">General notes & journal 📝</label>
+                <textarea id="reflection-general-notes" class="form-textarea" rows="3" placeholder="Any additional thoughts or reflection..."></textarea>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. GOALS VIEW -->
+        <section class="view-section" id="view-goals">
+          <div class="view-header-row">
+            <div>
+              <h1 class="page-title">Personal Goals</h1>
+              <p class="page-subtitle">Track quantitative targets, courses, reading lists, and milestones</p>
+            </div>
+            <button class="btn btn-primary" id="btn-add-goal">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              <span>Add Goal</span>
+            </button>
+          </div>
+
+          <div id="goals-container" style="margin-top: 20px;">
+            <!-- Dynamically populated -->
+          </div>
+        </section>
+
+        <!-- 5. INSIGHTS & ANALYTICS VIEW -->
+        <section class="view-section" id="view-insights">
+          <div class="view-header-row">
+            <div>
+              <h1 class="page-title" id="insights-period-title">Monthly Analytics</h1>
+              <p class="page-subtitle">Mathematical insights calculated from your real daily completions</p>
+            </div>
+          </div>
+
+          <!-- Insight Metrics Grid -->
+          <div class="insights-summary-grid">
+            <div class="card insight-metric-card">
+              <span class="insight-label">COMPLETION RATE</span>
+              <span class="insight-val" id="insight-overall-rate">0%</span>
+              <span class="insight-sub">Scheduled habits completed</span>
+            </div>
+            <div class="card insight-metric-card">
+              <span class="insight-label">COMPLETED HABITS</span>
+              <span class="insight-val text-success" id="insight-total-completed">0</span>
+              <span class="insight-sub">Total checkmarks</span>
+            </div>
+            <div class="card insight-metric-card">
+              <span class="insight-label">MISSED HABITS</span>
+              <span class="insight-val text-amber" id="insight-total-missed">0</span>
+              <span class="insight-sub">Scheduled but skipped</span>
+            </div>
+            <div class="card insight-metric-card">
+              <span class="insight-label">BEST DAY OF WEEK</span>
+              <span class="insight-val" id="insight-best-day">—</span>
+              <span class="insight-sub">Highest consistency day</span>
+            </div>
+            <div class="card insight-metric-card">
+              <span class="insight-label">TOP HABIT</span>
+              <span class="insight-val" id="insight-best-habit">—</span>
+              <span class="insight-sub">Most reliable habit</span>
+            </div>
+            <div class="card insight-metric-card">
+              <span class="insight-label">NEEDS ATTENTION</span>
+              <span class="insight-val text-amber" id="insight-needing-attention">—</span>
+              <span class="insight-sub">Lowest consistency habit</span>
+            </div>
+            <div class="card insight-metric-card">
+              <span class="insight-label">CURRENT BEST STREAK</span>
+              <span class="insight-val" id="insight-best-streak">0 days</span>
+              <span class="insight-sub">Active unbroken run</span>
+            </div>
+            <div class="card insight-metric-card">
+              <span class="insight-label">LONGEST STREAK EVER</span>
+              <span class="insight-val" id="insight-longest-streak">0 days</span>
+              <span class="insight-sub">All-time personal record</span>
+            </div>
+          </div>
+
+          <!-- Charts Row 1: Daily Trend + Weekly Bar -->
+          <div class="charts-row" style="margin-top: 24px;">
+            <div class="card chart-card">
+              <div class="chart-header">
+                <h3 class="chart-title">Daily Completion Trend</h3>
+                <span class="chart-subtitle">Days 1–31 completion percentage</span>
+              </div>
+              <div class="canvas-wrapper" style="height: 240px;">
+                <canvas id="chart-daily-trend"></canvas>
+              </div>
+            </div>
+
+            <div class="card chart-card">
+              <div class="chart-header">
+                <h3 class="chart-title">Weekly Progress</h3>
+                <span class="chart-subtitle">Weeks 1–5 comparison</span>
+              </div>
+              <div class="canvas-wrapper" style="height: 240px;">
+                <canvas id="chart-weekly-bars"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Row 2: Habit Performance Comparison -->
+          <div class="card chart-card" style="margin-top: 24px;">
+            <div class="chart-header">
+              <h3 class="chart-title">Habit Performance Comparison</h3>
+              <span class="chart-subtitle">Consistency by individual habit</span>
+            </div>
+            <div id="chart-habit-comparison" style="margin-top: 16px;">
+              <!-- Dynamically populated horizontal bars -->
+            </div>
+          </div>
+
+          <!-- Charts Row 3: Consistency Heatmap (GitHub-Style) -->
+          <div class="card chart-card" style="margin-top: 24px;">
+            <div class="chart-header">
+              <h3 class="chart-title">Consistency Heatmap</h3>
+              <span class="chart-subtitle">Yearly activity intensity (52 weeks)</span>
+            </div>
+            <div id="yearly-heatmap-container" style="margin-top: 16px;">
+              <!-- Heatmap grid -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. HISTORY VIEW -->
+        <section class="view-section" id="view-history">
+          <div class="view-header-row">
+            <div>
+              <h1 class="page-title">History & Records</h1>
+              <p class="page-subtitle">Long-term consistency trajectory and all-time personal records</p>
+            </div>
+          </div>
+
+          <!-- Personal Records Area -->
+          <div class="card records-card">
+            <h3 class="records-title">🏆 All-Time Personal Records</h3>
+            <div class="records-grid">
+              <div class="record-item">
+                <span class="record-label">Longest Streak</span>
+                <span class="record-value" id="record-longest-streak">0 days</span>
+              </div>
+              <div class="record-item">
+                <span class="record-label">Best Month</span>
+                <span class="record-value" id="record-best-month">—</span>
+              </div>
+              <div class="record-item">
+                <span class="record-label">Highest Single Day</span>
+                <span class="record-value" id="record-highest-daily">0</span>
+              </div>
+              <div class="record-item">
+                <span class="record-label">Lifetime Completions</span>
+                <span class="record-value" id="record-total-lifetime">0</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Past Months Chart -->
+          <div class="card chart-card" style="margin-top: 24px;">
+            <div class="chart-header">
+              <h3 class="chart-title">Monthly Trajectory</h3>
+              <span class="chart-subtitle">Historical completion % across past 12 months</span>
+            </div>
+            <div class="canvas-wrapper" style="height: 220px;">
+              <canvas id="chart-history-monthly-trend"></canvas>
+            </div>
+          </div>
+
+          <!-- Month Archive Cards -->
+          <h3 style="margin: 28px 0 16px 0; font-size: 1.1rem; font-weight: 600;">Monthly Archives</h3>
+          <div class="history-grid" id="history-months-list">
+            <!-- Dynamically populated -->
+          </div>
+        </section>
+
+        <!-- 7. SETTINGS VIEW -->
+        <section class="view-section" id="view-settings">
+          <div class="view-header-row">
+            <div>
+              <h1 class="page-title">Settings & Data</h1>
+              <p class="page-subtitle">Appearance, backup, restore, and offline options</p>
+            </div>
+          </div>
+
+          <div class="settings-sections-list">
+            <!-- Theme Card -->
+            <div class="card settings-card">
+              <div class="settings-card-header">
+                <h3>Appearance & Theme</h3>
+                <p>Choose your preferred color theme. Matches system preference automatically.</p>
+              </div>
+              <div class="theme-options-group">
+                <label class="theme-option-radio">
+                  <input type="radio" name="theme-choice" value="light" />
+                  <div class="theme-option-content">
+                    <span class="theme-icon">☀️</span>
+                    <span class="theme-name">Light</span>
+                  </div>
+                </label>
+                <label class="theme-option-radio">
+                  <input type="radio" name="theme-choice" value="dark" />
+                  <div class="theme-option-content">
+                    <span class="theme-icon">🌙</span>
+                    <span class="theme-name">Dark</span>
+                  </div>
+                </label>
+                <label class="theme-option-radio">
+                  <input type="radio" name="theme-choice" value="system" />
+                  <div class="theme-option-content">
+                    <span class="theme-icon">💻</span>
+                    <span class="theme-name">System</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Backup & Restore Card -->
+            <div class="card settings-card">
+              <div class="settings-card-header">
+                <h3>Data Backup & Restore</h3>
+                <p>Your data is stored 100% locally in your browser IndexedDB. Export a JSON backup anytime for safekeeping.</p>
+              </div>
+              <div class="settings-btn-group">
+                <button class="btn btn-secondary" id="btn-settings-export">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  Export Full Backup (JSON)
+                </button>
+                <button class="btn btn-secondary" id="btn-settings-import">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                  Restore From JSON Backup
+                </button>
+                <input type="file" id="settings-import-file" accept=".json" style="display: none;" />
+              </div>
+            </div>
+
+            <!-- Danger Zone -->
+            <div class="card settings-card danger-card">
+              <div class="settings-card-header">
+                <h3 style="color: var(--accent-rose);">Danger Zone</h3>
+                <p>Erase all habits, check-ins, goals, reflections, and settings. This action cannot be undone.</p>
+              </div>
+              <button class="btn btn-danger" id="btn-settings-reset">
+                Reset All Progress Data
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav class="mobile-bottom-nav">
+      <a href="#dashboard" class="mobile-nav-item active" data-view-target="dashboard">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg>
+        <span>Dashboard</span>
+      </a>
+      <a href="#today" class="mobile-nav-item" data-view-target="today">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path></svg>
+        <span>Today</span>
+      </a>
+      <a href="#tracker" class="mobile-nav-item" data-view-target="tracker">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <span>Tracker</span>
+      </a>
+      <a href="#goals" class="mobile-nav-item" data-view-target="goals">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+        <span>Goals</span>
+      </a>
+      <a href="#insights" class="mobile-nav-item" data-view-target="insights">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+        <span>Insights</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- ======================================================
+       MODALS & OVERLAYS
+  ====================================================== -->
+
+  <!-- 1. ADD / EDIT HABIT MODAL -->
+  <div class="modal-overlay" id="habit-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Add New Habit</h3>
+        <button class="btn-icon" id="habit-modal-close" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <form id="habit-form" class="modal-form">
+        <div class="form-group">
+          <label for="habit-name">Habit Name *</label>
+          <input type="text" id="habit-name" class="form-input" placeholder="e.g. Deep Study, Exercise, Read" required />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" style="flex: 0 0 90px;">
+            <label for="habit-emoji">Emoji</label>
+            <input type="text" id="habit-emoji" class="form-input" value="🎯" style="text-align: center; font-size: 1.25rem;" />
+          </div>
+          <div class="form-group" style="flex: 1;">
+            <label for="habit-category">Category</label>
+            <select id="habit-category" class="form-select">
+              <option value="Study">Study</option>
+              <option value="Health">Health</option>
+              <option value="Fitness">Fitness</option>
+              <option value="Coding">Coding</option>
+              <option value="Mind">Mind</option>
+              <option value="Finance">Finance</option>
+              <option value="Personal">Personal</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="emoji-presets-row" id="emoji-presets">
+          <!-- Populated dynamically -->
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" style="flex: 1;">
+            <label for="habit-weekly-goal">Weekly Goal (days/week)</label>
+            <input type="number" id="habit-weekly-goal" class="form-input" min="1" max="7" value="7" />
+          </div>
+          <div class="form-group" style="flex: 1;">
+            <label for="habit-start-date">Start Date</label>
+            <input type="date" id="habit-start-date" class="form-input" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Target Days Scheduled</label>
+          <div class="target-days-picker" id="habit-target-days">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="habit-description">Description / Notes (optional)</label>
+          <textarea id="habit-description" class="form-textarea" rows="2" placeholder="Why is this habit important to you?"></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="habit-modal-cancel">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="habit-modal-submit">Save Habit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. HABIT DETAIL DRAWER / MODAL -->
+  <div class="modal-overlay" id="habit-detail-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span id="habit-detail-emoji" style="font-size: 1.8rem;">🎯</span>
+          <div>
+            <h3 class="modal-title" id="habit-detail-name">Habit Name</h3>
+            <span class="badge" id="habit-detail-category">Category</span>
+          </div>
+        </div>
+        <button class="btn-icon" id="habit-detail-close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p id="habit-detail-desc" style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;"></p>
+
+        <div class="detail-stats-grid">
+          <div class="detail-stat-box">
+            <span class="detail-label">Current Streak</span>
+            <span class="detail-val" id="habit-detail-current-streak">0 days</span>
+          </div>
+          <div class="detail-stat-box">
+            <span class="detail-label">Longest Streak</span>
+            <span class="detail-val" id="habit-detail-longest-streak">0 days</span>
+          </div>
+          <div class="detail-stat-box">
+            <span class="detail-label">Last 30 Days</span>
+            <span class="detail-val" id="habit-detail-rate">0%</span>
+          </div>
+          <div class="detail-stat-box">
+            <span class="detail-label">Total Completions</span>
+            <span class="detail-val" id="habit-detail-total-completed">0</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px;">
+          <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase;">Recent 30-Day Activity</span>
+          <div class="sparkline-bar" id="habit-detail-sparkline" style="display: flex; gap: 3px; margin-top: 8px;">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="justify-content: space-between;">
+        <button type="button" class="btn btn-danger btn-sm" id="habit-detail-btn-delete">Delete</button>
+        <div style="display: flex; gap: 8px;">
+          <button type="button" class="btn btn-secondary btn-sm" id="habit-detail-btn-archive">Archive</button>
+          <button type="button" class="btn btn-primary btn-sm" id="habit-detail-btn-edit">Edit Habit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. ADD / EDIT GOAL MODAL -->
+  <div class="modal-overlay" id="goal-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Add New Goal</h3>
+        <button class="btn-icon" id="goal-modal-close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <form id="goal-form" class="modal-form">
+        <div class="form-group">
+          <label for="goal-title">Goal Name *</label>
+          <input type="text" id="goal-title" class="form-input" placeholder="e.g. Study 100 hours, Read 10 books" required />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" style="flex: 1;">
+            <label for="goal-category">Category</label>
+            <select id="goal-category" class="form-select">
+              <option value="Study">Study</option>
+              <option value="Coding">Coding</option>
+              <option value="Health">Health</option>
+              <option value="Fitness">Fitness</option>
+              <option value="Mind">Mind</option>
+              <option value="Finance">Finance</option>
+              <option value="Personal">Personal</option>
+            </select>
+          </div>
+          <div class="form-group" style="flex: 1;">
+            <label for="goal-unit">Unit</label>
+            <input type="text" id="goal-unit" class="form-input" placeholder="hours, books, %" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" style="flex: 1;">
+            <label for="goal-current">Current Progress</label>
+            <input type="number" id="goal-current" class="form-input" min="0" value="0" />
+          </div>
+          <div class="form-group" style="flex: 1;">
+            <label for="goal-target">Target Target *</label>
+            <input type="number" id="goal-target" class="form-input" min="1" value="100" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="goal-deadline">Deadline</label>
+          <input type="date" id="goal-deadline" class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label for="goal-notes">Notes</label>
+          <textarea id="goal-notes" class="form-textarea" rows="2" placeholder="Key focus or milestones..."></textarea>
+        </div>
+
+        <div class="modal-footer" style="justify-content: space-between;">
+          <button type="button" class="btn btn-danger btn-sm" id="goal-modal-delete" style="display: none;">Delete</button>
+          <div style="display: flex; gap: 8px; margin-left: auto;">
+            <button type="button" class="btn btn-secondary" id="goal-modal-cancel">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="goal-modal-submit">Save Goal</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. WELCOME ONBOARDING MODAL -->
+  <div class="modal-overlay" id="welcome-modal">
+    <div class="modal-dialog" style="max-width: 480px; text-align: center; padding: 32px 24px;">
+      <div style="font-size: 3rem; margin-bottom: 12px;">🌱</div>
+      <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 8px;">Welcome to PROGRESS</h2>
+      <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5; margin-bottom: 24px;">
+        Build consistency, one day at a time. Track your daily routines, study, health, and personal growth with spreadsheet precision and modern analytics.
+      </p>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <button class="btn btn-primary btn-lg" id="welcome-btn-sample">
+          Use Recommended Starter Habits
+        </button>
+        <button class="btn btn-outline" id="welcome-btn-fresh">
+          Start Fresh (Add My Own Habits)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. STANDARD CONFIRMATION MODAL -->
+  <div class="modal-overlay" id="confirm-modal">
+    <div class="modal-dialog" style="max-width: 420px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Confirm Action</h3>
+      </div>
+      <div class="modal-body">
+        <p class="modal-body-text" style="color: var(--text-secondary); line-height: 1.5;"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary modal-btn-cancel">Cancel</button>
+        <button type="button" class="btn btn-primary modal-btn-confirm">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. TYPED RESET CONFIRMATION MODAL -->
+  <div class="modal-overlay" id="reset-confirm-modal">
+    <div class="modal-dialog" style="max-width: 420px;">
+      <div class="modal-header">
+        <h3 class="modal-title" style="color: var(--accent-rose);">Reset All Data?</h3>
+      </div>
+      <div class="modal-body">
+        <p style="color: var(--text-secondary); line-height: 1.5; margin-bottom: 14px;">
+          This will permanently delete all your habits, completed checks, notes, and records. To confirm, type <strong>RESET</strong> below:
+        </p>
+        <input type="text" id="reset-confirm-input" class="form-input" placeholder="Type RESET" autocomplete="off" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="reset-confirm-cancel">Cancel</button>
+        <button type="button" class="btn btn-danger" id="reset-confirm-submit" disabled>Delete Everything</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING TOOLTIPS & TOAST CONTAINERS -->
+  <div class="heatmap-floating-tooltip" id="heatmap-tooltip"></div>
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- MAIN SCRIPT MODULE -->
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
